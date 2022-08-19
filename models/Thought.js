@@ -1,14 +1,25 @@
 const { Schema, model } = require('mongoose');
+const { stringify } = require('querystring');
 
 // Schema to create User model
 const thoughtSchema = new Schema(
   {
-    thought_content: String,
-    username: String
-
+    thoughtText: {
+      type: String,
+      required: true,
+      minlength: 1,
+      maxlength: 280
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
+    username: {
+      type: String,
+      required: true
+    },
   },
   {
-    // Here we are indicating that we want virtuals to be included with our response, overriding the default behavior
     toJSON: {
       virtuals: true,
     },
