@@ -3,12 +3,19 @@ const {
   getThoughts,
   getSingleThought,
   createThought,
-} = require('../../controllers/userController');
+  deleteThought
+} = require('../../controllers/thoughtController');
 
-// all thoughts
-router.route('/').get(getThoughts).post(createThought);
 
-// single thought
-router.route('/:userId').get(getSingleThought);
+router.route('/')
+  .get(getThoughts)
+  .post(createThought);
+
+
+router.route('/:thoughtId')
+  .put(getSingleThought)
+  .delete(removeThought)
+
+
 
 module.exports = router;
