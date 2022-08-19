@@ -28,13 +28,24 @@ module.exports = {
             .catch((err) => res.status(500).json(err));
     },
 
+        // update a user
+        updateUser({params, body}, res){
+            User.findOneAndUpdate({_id: params.userId }, body, {
+                new: true,
+                runValidators: true,
+              })
+            .then((user) =>
+            !user
+              ? res.status(404).json({ message: 'No user with this id!' })
+              : res.json(user)
+          )
+          .catch((err) => res.status(500).json(err));
+        },
+
     // delete a user
     removeUser(req, res) {
-        User.findOneAndRemove(
-          { _id: req.params.userId },
-          { $pull: { thoughtss: { thoughtId: req.params.thoughtId } } },
-          { runValidators: true, new: true }
-        )
+        User.findOneAndDelete(
+          { _id: req.params.userId })
           .then((user) =>
             !user
               ? res.status(404).json({ message: 'No user with this id!' })
