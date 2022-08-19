@@ -6,6 +6,8 @@
 
 The social network API built using Mongo creates a social media backend that allows users to  share thoughts, react to thoughts, and have a friend list. They are able to update, delete and add thoughts using the routes in this API.
 
+video walkthrough: https://watch.screencastify.com/v/sPz66LjpYDNFAZv89CeY 
+
 ## Table of Contents
 
 * [Installation](#installation)
