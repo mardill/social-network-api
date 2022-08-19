@@ -30,9 +30,9 @@ module.exports = {
 
     // delete a user
     removeUser(req, res) {
-        User.findOneAndUpdate(
+        User.findOneAndRemove(
           { _id: req.params.userId },
-          { $pull: { tags: { tagId: req.params.userId } } },
+          { $pull: { thoughtss: { thoughtId: req.params.thoughtId } } },
           { runValidators: true, new: true }
         )
           .then((user) =>

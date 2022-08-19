@@ -3,10 +3,6 @@ const { Schema, model } = require('mongoose');
 // Schema to create User model
 const thoughtSchema = new Schema(
   {
-    thoughtId: {
-        type: Schema.Types.ObjectId,
-        default: () => new Types.ObjectId(),
-      },
     thought_content: String,
     username: String
 
