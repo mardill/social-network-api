@@ -28,13 +28,21 @@ module.exports = {
             .catch((err) => res.status(500).json(err));
     },
 
+    // update a thought
+    updateThought(req, res){
+        Thought.findOneAndUpdate({_id: req.params.thoughtId })
+        .then((thought) =>
+        !thought
+          ? res.status(404).json({ message: 'No thought with this id!' })
+          : res.json(thought)
+      )
+      .catch((err) => res.status(500).json(err));
+    },
+
     // delete a thought
     removeThought(req, res) {
-        Thought.findOneAndRemove(
-          { _id: req.params.thoughtId },
-          { $pull: { users: { userId: req.params.userId } } },
-          { runValidators: true, new: true }
-        )
+        Thought.findOneAndDelete(
+          { _id: req.params.thoughtId })
           .then((thought) =>
             !thought
               ? res.status(404).json({ message: 'No thought with this id!' })
