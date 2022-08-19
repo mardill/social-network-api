@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 
+
 // Schema to create User model
 const userSchema = new Schema(
   {
@@ -11,7 +12,6 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: true,
-      validate: [validateEmail, 'Please fill a valid email address']
     },
     thoughts: [
       {
